@@ -1,0 +1,41 @@
+---
+interface Props {
+  href: string;
+  name: string;
+  l1: string;
+  l2: string;
+  l3: string;
+  index: number;
+  isCurrent: boolean;
+}
+
+const { href, name, l1, l2, l3, index, isCurrent } = Astro.props;
+---
+
+<a
+  href={href}
+  class="haiku-row flex min-h-11 items-baseline gap-3 rounded-xs px-4 py-[0.85rem] text-inherit no-underline"
+  style={`--i: ${index}`}
+  aria-current={isCurrent ? "page" : undefined}
+>
+  <span
+    class="shrink-0 text-[0.92rem] font-normal text-(--anro-accent)"
+    aria-hidden="true"
+  >
+    $
+  </span>
+  <span class="haiku-name shrink-0 font-normal tracking-[0.05em]">
+    {name}
+  </span>
+  <div class="haiku-lines ml-auto flex flex-col gap-[0.1rem] text-right">
+    <span class="h-code leading-normal font-light">
+      {l1}
+    </span>
+    <span class="h-poem leading-normal font-extralight italic">
+      {l2}
+    </span>
+    <span class="h-code leading-normal font-light">
+      {l3}
+    </span>
+  </div>
+</a>

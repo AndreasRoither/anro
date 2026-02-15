@@ -1,0 +1,48 @@
+export const languages = { en: "English", de: "Deutsch" } as const;
+export const defaultLang = "en" as const;
+export type Lang = keyof typeof languages;
+
+export const ui = {
+  en: {
+    "a11y.skip": "Skip to main content",
+    "home.title": "Overview anro.dev",
+    "home.description": "Navigate all sections of anro.dev",
+    "nav.projects": "Projects",
+    "nav.now": "Now",
+    "nav.thoughts": "Thoughts",
+    "nav.stack": "Stack",
+    "nav.bookmarks": "Bookmarks",
+    "haiku.projects.verse": "from scattered stones, a garden",
+    "haiku.now.verse": "the matcha reflects only this",
+    "haiku.thoughts.verse": "variables shift like dreams",
+    "haiku.stack.verse": "the programmer's wooden shelf",
+    "haiku.bookmarks.verse": "stepping stones across the pond",
+    "social.github": "GitHub",
+    "social.linkedin": "LinkedIn",
+    "social.rss": "RSS Feed",
+    "error.notFound.title": "404",
+    "error.notFound.description": "Page not found",
+    "error.notFound.message": "This page has steeped too long and dissolved.",
+  },
+  de: {
+    "a11y.skip": "Zum Inhalt springen",
+    "home.title": "Übersicht anro.dev",
+    "home.description": "Alle Bereiche von anro.dev",
+    "nav.projects": "Projekte",
+    "nav.now": "Jetzt",
+    "nav.thoughts": "Gedanken",
+    "nav.stack": "Stack",
+    "nav.bookmarks": "Lesezeichen",
+    "haiku.projects.verse": "from scattered stones, a garden",
+    "haiku.now.verse": "the matcha reflects only this",
+    "haiku.thoughts.verse": "variables shift like dreams",
+    "haiku.stack.verse": "the programmer's wooden shelf",
+    "haiku.bookmarks.verse": "stepping stones across the pond",
+    "social.github": "GitHub",
+    "social.linkedin": "LinkedIn",
+    "social.rss": "RSS-Feed",
+    "error.notFound.title": "404",
+    "error.notFound.description": "Seite nicht gefunden",
+    "error.notFound.message": "Diese Seite hat zu lange gezogen und sich aufgelöst.",
+  },
+} as const;

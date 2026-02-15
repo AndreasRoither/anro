@@ -1,0 +1,19 @@
+---
+interface Props {
+  version: string;
+}
+
+const { version } = Astro.props;
+---
+
+<div class="mb-8 w-full px-4 text-[1.05rem]" aria-hidden="true">
+  <div class="mb-1 flex items-center gap-3">
+    <span class="font-normal text-(--anro-ss-dir)">~/anro</span>
+    <span class="font-normal text-(--anro-ss-branch)"> main</span>
+    <span class="font-light text-(--anro-ss-env)">v{version}</span>
+  </div>
+  <div class="flex items-center gap-[0.4rem]">
+    <span class="font-normal text-(--anro-ss-char)">&#x276F;</span>
+    <span class="cursor h-4 w-2 bg-current"></span>
+  </div>
+</div>

@@ -1,0 +1,71 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import TermBar from "./overview/TermBar.astro";
+import "../styles/theme.css";
+import "../styles/shell.css";
+
+interface Props {
+  title: string;
+  termTitle: string;
+  description?: string;
+  shellCommand?: string;
+  wide?: boolean;
+  noindex?: boolean;
+  nofollow?: boolean;
+  languageAlternates?: Array<{ href: string; hrefLang: string }>;
+}
+
+const {
+  title,
+  termTitle,
+  description,
+  shellCommand,
+  wide = false,
+  noindex,
+  nofollow,
+  languageAlternates,
+} = Astro.props;
+---
+
+<BaseLayout title={title} description={description} hideGlobalToggle={true} noindex={noindex} nofollow={nofollow} languageAlternates={languageAlternates}>
+  <div class="anro-page relative flex min-h-dvh flex-col items-center font-light">
+    <TermBar title={termTitle} />
+
+    <div
+      class:list={[
+        "anro-content relative z-1 w-full flex-1 px-4 py-8",
+        wide ? "max-w-5xl" : "max-w-160",
+      ]}
+    >
+      <a
+        href="/"
+        class="shell-back mb-2 flex w-fit items-center gap-2 rounded-sm px-[0.85rem] py-2 text-[0.9rem] text-inherit no-underline transition-colors duration-300 hover:bg-(--anro-hover-bg)"
+        aria-label="Back to home"
+      >
+        <span
+          class="shrink-0 font-medium text-(--anro-accent)"
+          aria-hidden="true"
+        >
+          &gt; ~
+        </span>
+        <span class="text-(--anro-text) opacity-80" aria-hidden="true">
+          cd ..
+        </span>
+      </a>
+
+      {
+        shellCommand && (
+          <div
+            class="mb-8 flex w-fit items-center gap-2 rounded-sm border border-(--anro-bar-border) bg-(--anro-bar-bg) px-[0.85rem] py-2 text-[0.9rem]"
+            aria-hidden="true"
+          >
+            <span class="shrink-0 font-medium text-(--anro-accent)">&gt; ~</span>
+            <span class="text-(--anro-text) opacity-80">{shellCommand}</span>
+          </div>
+        )
+      }
+
+      <slot />
+    </div>
+  </div>
+</BaseLayout>

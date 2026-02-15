@@ -1,0 +1,46 @@
+---
+import PageShell from "../components/PageShell.astro";
+import { stack } from "../data/stack";
+---
+
+<PageShell
+  title="Stack - Matcha Pixels"
+  termTitle="stack"
+  shellCommand="stack --list"
+  wide
+>
+  <header class="mb-12">
+    <h1
+      class="m-0 mb-2 text-[clamp(1.75rem,4vw,2.5rem)] font-bold tracking-tight"
+    >
+      Stack
+    </h1>
+    <p class="m-0 text-[0.95rem] text-(--anro-text-faint)">
+      Tools, hardware, and software I use daily.
+    </p>
+  </header>
+
+  <div class="grid grid-cols-1 gap-10 sm:grid-cols-2">
+    {
+      stack.map((group) => (
+        <section class="border-t-2 border-(--anro-text) pt-4">
+          <h2 class="m-0 mb-4 text-[0.8rem] font-black tracking-[0.12em] text-(--anro-accent) uppercase">
+            {group.category}
+          </h2>
+          <dl class="m-0 flex flex-col gap-3 p-0">
+            {group.items.map((item) => (
+              <div class="border-l-2 border-(--anro-bar-border) pl-4">
+                <dt class="m-0 mb-[0.15rem] text-[0.95rem] font-bold">
+                  {item.name}
+                </dt>
+                <dd class="m-0 text-[0.85rem] leading-normal text-(--anro-text-faint)">
+                  {item.note}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </section>
+      ))
+    }
+  </div>
+</PageShell>

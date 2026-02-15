@@ -1,0 +1,37 @@
+---
+import PageShell from "../components/PageShell.astro";
+import { lastUpdated_Now, sections } from "../data/now";
+---
+
+<PageShell title="Now - Matcha Pixels" termTitle="now" shellCommand="now" wide>
+  <header class="mb-12">
+    <h1
+      class="m-0 mb-2 text-[clamp(1.75rem,4vw,2.5rem)] font-bold tracking-tight"
+    >
+      What I'm doing now
+    </h1>
+    <p class="m-0 text-[0.85rem] tracking-wide text-(--anro-text-muted)">
+      Last updated: {lastUpdated_Now}
+    </p>
+  </header>
+
+  <div class="flex flex-col gap-10">
+    {
+      sections.map((section) => (
+        <section class="border-l-3 border-(--anro-accent) pl-5">
+          <h2 class="m-0 mb-3 text-[1.1rem] font-bold tracking-[0.06em] text-(--anro-accent) uppercase">
+            {section.title}
+          </h2>
+          <ul class="m-0 flex list-none flex-col gap-2 p-0">
+            {section.items.map((item) => (
+              <li
+                class="relative pl-4 text-[0.95rem] leading-relaxed before:absolute before:left-0 before:text-(--anro-text-faint) before:content-['—']"
+                set:html={item.text}
+              />
+            ))}
+          </ul>
+        </section>
+      ))
+    }
+  </div>
+</PageShell>

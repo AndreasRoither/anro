@@ -1,0 +1,34 @@
+/* Styles for the shared page shell / terminal chrome. */
+
+/*  Theme toggle overrides  */
+.anro-page .term-bar .theme-toggle {
+  border: none;
+  padding: 0.25rem;
+  opacity: 0.5;
+  transition:
+    opacity var(--anro-transition-speed) ease,
+    color var(--anro-transition-speed) ease;
+}
+
+.anro-page .term-bar .theme-toggle:hover {
+  opacity: 1;
+  color: var(--anro-accent);
+}
+
+/*  Shell back hover  */
+.anro-page .shell-back {
+  transition: background-color var(--anro-transition-speed) ease;
+}
+
+/*  Responsive: mobile padding  */
+@media (max-width: 500px) {
+  .anro-page .anro-content {
+    padding: 1.5rem 0.75rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .anro-page .anro-content {
+    padding: 1.5rem 0.5rem;
+  }
+}

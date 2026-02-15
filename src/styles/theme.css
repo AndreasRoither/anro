@@ -1,0 +1,44 @@
+/* custom properties + base styles for .anro-page.
+   Scoped under .anro-page to prevent leaking. */
+
+.anro-page {
+  --anro-bg: #f4f3f1;
+  --anro-text: #3a3a3a;
+  --anro-accent: #718355;
+  --anro-accent-light: #87986a;
+  --anro-bar-bg: #eaeae8;
+  --anro-bar-border: #dddcd9;
+  --anro-text-muted: #87986a;
+  --anro-text-faint: #97a97c;
+  --anro-hover-bg: rgba(113, 131, 85, 0.08);
+  --anro-bar-height: 1.85rem;
+  --anro-transition-speed: 0.3s;
+  --anro-font: "Geist Variable", sans-serif;
+  --anro-ss-dir: #5b8ab8;
+  --anro-ss-branch: #718355;
+  --anro-ss-env: #b8935b;
+  --anro-ss-char: #97a97c;
+  --anro-wip-badge: #ff3333;
+
+  overflow-x: clip;
+  font-family: var(--anro-font);
+  background-color: var(--anro-bg);
+  color: var(--anro-text);
+}
+
+[data-theme="dark"] .anro-page {
+  --anro-bg: #111210;
+  --anro-text: #e8e6e1;
+  --anro-accent: #97a97c;
+  --anro-accent-light: #e9f5db;
+  --anro-bar-bg: #1a1b18;
+  --anro-bar-border: #2a2b25;
+  --anro-text-muted: #e8e6e1;
+  --anro-text-faint: #808080;
+  --anro-hover-bg: rgba(151, 169, 124, 0.08);
+  --anro-ss-dir: #7aade0;
+  --anro-ss-branch: #97a97c;
+  --anro-ss-env: #d4a85b;
+  --anro-ss-char: #b5c99a;
+  --anro-wip-badge: #ff3333;
+}

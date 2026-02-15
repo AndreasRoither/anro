@@ -1,0 +1,147 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { version } from "../../../package.json";
+import "../../styles/theme.css";
+import "../../styles/overview.css";
+import TermBar from "../../components/overview/TermBar.astro";
+import TeaBowl from "../../components/overview/TeaBowl.astro";
+import SocialLinks from "../../components/overview/SocialLinks.astro";
+import HaikuRow from "../../components/overview/HaikuRow.astro";
+import StarshipPrompt from "../../components/overview/StarshipPrompt.astro";
+import ZenStones from "../../components/overview/ZenStones.astro";
+import { getLocalePaths, getLang, t } from "../../i18n";
+
+export function getStaticPaths() {
+  return getLocalePaths();
+}
+
+const { locale } = Astro.params;
+const lang = getLang(locale);
+
+const links = [
+  {
+    href: "/projects",
+    name: t(lang, "nav.projects"),
+    l1: "const code = build()",
+    l2: t(lang, "haiku.projects.verse"),
+    l3: "projects take their form",
+  },
+  {
+    href: "/now",
+    name: t(lang, "nav.now"),
+    l1: "return moment.now()",
+    l2: t(lang, "haiku.now.verse"),
+    l3: "silence compiles truth",
+  },
+  {
+    href: "/thoughts",
+    name: t(lang, "nav.thoughts"),
+    l1: "while (wind.passes())",
+    l2: t(lang, "haiku.thoughts.verse"),
+    l3: "thoughts return to calm",
+  },
+  {
+    href: "/stack",
+    name: t(lang, "nav.stack"),
+    l1: "import { tools } from",
+    l2: t(lang, "haiku.stack.verse"),
+    l3: "each rake chosen well",
+  },
+  {
+    href: "/bookmarks",
+    name: t(lang, "nav.bookmarks"),
+    l1: "const path = remember",
+    l2: t(lang, "haiku.bookmarks.verse"),
+    l3: "return here again",
+  },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<BaseLayout
+  title={t(lang, "home.title")}
+  description={t(lang, "home.description")}
+  hideGlobalToggle={true}
+>
+  <div
+    class="anro-page relative flex min-h-dvh flex-col items-center font-light"
+  >
+    <TermBar title="matcha-pixels" lang={lang} />
+
+    <div
+      class="anro-content relative z-1 flex w-full max-w-160 flex-1 flex-col items-center px-4 py-8"
+    >
+      <!-- whoami prompt -->
+      <div
+        class="mb-4 flex w-fit items-center gap-2 self-start rounded-sm border border-(--anro-bar-border) bg-(--anro-bar-bg) px-[0.85rem] py-2 text-[0.9rem]"
+        role="presentation"
+      >
+        <span class="sr-only">Identity section</span>
+        <span
+          class="shrink-0 font-medium text-(--anro-accent)"
+          aria-hidden="true"
+        >
+          &gt; ~
+        </span>
+        <span class="text-(--anro-text) opacity-80" aria-hidden="true">
+          whoami
+        </span>
+      </div>
+
+      <div
+        class="sticky top-(--anro-bar-height) z-2 flex w-full flex-col items-center bg-(--anro-bg) pb-1"
+      >
+        <TeaBowl />
+
+        <header class="mb-2 flex flex-col items-center text-center">
+          <h1 class="text-2xl">Andreas Roither</h1>
+          <SocialLinks lang={lang} />
+        </header>
+      </div>
+
+      <!-- Shell ls prompt -->
+      <div class="mt-2 self-stretch border-t border-(--anro-bar-border) pt-4">
+        <div
+          class="mb-4 flex w-fit items-center gap-2 rounded-sm border border-(--anro-bar-border) bg-(--anro-bar-bg) px-[0.85rem] py-2 text-[0.9rem]"
+          role="presentation"
+        >
+          <span class="sr-only">Navigation section</span>
+          <span
+            class="shrink-0 font-medium text-(--anro-accent)"
+            aria-hidden="true"
+          >
+            &gt; ~
+          </span>
+          <span class="text-(--anro-text) opacity-80" aria-hidden="true">
+            ls --haiku
+          </span>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <nav aria-label="Site pages" class="haiku-list mx-auto mb-9 w-full">
+        <ol role="list" class="m-0 flex list-none flex-col gap-1 p-0">
+          {
+            links.map((link, i) => (
+              <li>
+                <HaikuRow
+                  href={link.href}
+                  name={link.name}
+                  l1={link.l1}
+                  l2={link.l2}
+                  l3={link.l3}
+                  index={i}
+                  isCurrent={currentPath === link.href}
+                />
+              </li>
+            ))
+          }
+        </ol>
+      </nav>
+
+      <StarshipPrompt version={version} />
+      <ZenStones />
+    </div>
+  </div>
+</BaseLayout>

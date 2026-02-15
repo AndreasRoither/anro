@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://anro.dev/sitemap-index.xml

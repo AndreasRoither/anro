@@ -1,0 +1,27 @@
+---
+import PageShell from "../components/PageShell.astro";
+import BookmarkFilter from "../components/BookmarkFilter.tsx";
+import { categories } from "../data/bookmarks";
+import "../styles/filters.css";
+---
+
+<PageShell
+  title="Bookmarks - Matcha Pixels"
+  termTitle="bookmarks"
+  shellCommand="cat bookmarks.json"
+  wide
+>
+  <header class="mb-10">
+    <h1
+      class="m-0 mb-3 text-[clamp(2.25rem,6vw,4rem)] leading-none font-black tracking-tight uppercase"
+    >
+      Bookmarks
+    </h1>
+    <p class="m-0 max-w-[28ch] text-[1.125rem] font-normal opacity-60">
+      A curated collection of links I think are worth visiting.
+    </p>
+    <hr class="mt-6 mb-0 h-0.75 border-none bg-(--anro-text)" />
+  </header>
+
+  <BookmarkFilter client:load categories={categories} />
+</PageShell>

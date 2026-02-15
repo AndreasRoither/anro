@@ -1,1 +1,30 @@
 @import "tailwindcss";
+
+/*  Theme Custom Properties  */
+:root {
+  --focus-color: #4a7c59;
+  --focus-outline: 2px solid var(--focus-color);
+  --focus-offset: 2px;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+/*  Focus Indicators */
+*:focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-offset);
+}
+
+/*  Reduced Motion  */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

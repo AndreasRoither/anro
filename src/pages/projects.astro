@@ -1,0 +1,53 @@
+---
+import PageShell from "../components/PageShell.astro";
+import ProjectFilter from "../components/ProjectFilter.tsx";
+import { projects } from "../data/projects";
+import "../styles/filters.css";
+---
+
+<PageShell
+  title="Projects - Matcha Pixels"
+  termTitle="projects"
+  shellCommand="ls projects/"
+  wide
+>
+  <header class="mb-16 pt-4">
+    <div
+      class="-mb-4 text-base tracking-[0.05em] text-(--anro-accent) opacity-70"
+      aria-hidden="true"
+    >
+      &lt;projects&gt;
+    </div>
+    <h1
+      class="m-0 -ml-2 overflow-visible pt-2 text-[clamp(6rem,18vw,12rem)] leading-[0.85] font-black tracking-tighter whitespace-nowrap uppercase max-sm:text-[clamp(4rem,20vw,8rem)]"
+      aria-label="Projects"
+    >
+      PROJECTS
+    </h1>
+    <p class="mt-6 text-base font-bold tracking-[0.05em] uppercase">
+      <span
+        class="inline bg-(--anro-accent) box-decoration-clone px-[0.4em] py-[0.15em] text-(--anro-bg)"
+      >
+        Things I've built, am building, or will build.
+      </span>
+    </p>
+  </header>
+
+  <ProjectFilter client:load projects={projects} />
+
+  <footer class="mx-auto max-w-250 border-(--anro-text) py-4 pb-16">
+    <div
+      class="mb-2 block text-xl tracking-[0.05em] text-(--anro-accent) opacity-70"
+      aria-hidden="true"
+    >
+      &lt;/projects&gt;
+    </div>
+    <p class="text-sm font-bold tracking-[0.05em] uppercase">
+      <span
+        class="inline bg-(--anro-accent) box-decoration-clone px-[0.4em] py-[0.15em] text-(--anro-bg)"
+      >
+        More coming soon.
+      </span>
+    </p>
+  </footer>
+</PageShell>

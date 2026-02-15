@@ -1,0 +1,168 @@
+<div class="mt-3 mb-2 text-(--anro-accent)" aria-hidden="true">
+  <svg
+    viewBox="0 0 100 100"
+    width="90"
+    height="90"
+    aria-hidden="true"
+    focusable="false"
+  >
+    <defs>
+      <filter id="bowlGlow">
+        <feGaussianBlur stdDeviation="6"></feGaussianBlur>
+      </filter>
+    </defs>
+    <!-- Bowl glow -->
+    <ellipse
+      class="bowl-glow"
+      cx="50"
+      cy="60"
+      rx="30"
+      ry="22"
+      filter="url(#bowlGlow)"
+      fill="currentColor"
+      opacity="0.04"></ellipse>
+    <!-- Steam wisps -->
+    <path class="steam s1" d="M35,38 C33,30 37,22 35,14"></path>
+    <path class="steam s4" d="M42,37 C40,29 44,21 42,13"></path>
+    <path class="steam s2" d="M50,36 C48,28 52,20 50,12"></path>
+    <path class="steam s5" d="M58,37 C56,29 60,21 58,13"></path>
+    <path class="steam s3" d="M65,38 C63,30 67,22 65,14"></path>
+    <!-- Bowl body -->
+    <path
+      d="M20,45 Q20,42 25,40 L75,40 Q80,42 80,45 L75,72 Q72,80 50,82 Q28,80 25,72 Z"
+      fill="currentColor"
+      opacity="0.15"></path>
+    <!-- Bowl rim -->
+    <path
+      d="M20,45 Q20,42 25,40 L75,40 Q80,42 80,45"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.5"
+      opacity="0.3"></path>
+    <!-- Kintsugi gold cracks -->
+    <path
+      class="kintsugi k1"
+      d="M35,45 L38,58 L33,70"
+      stroke="#c9a84c"
+      stroke-width="1"
+      fill="none"></path>
+    <path
+      class="kintsugi k2"
+      d="M60,42 L57,55 L62,68"
+      stroke="#c9a84c"
+      stroke-width="1"
+      fill="none"></path>
+    <path
+      class="kintsugi k3"
+      d="M45,72 L52,65 L48,55"
+      stroke="#c9a84c"
+      stroke-width="0.8"
+      fill="none"></path>
+    <!-- Bowl base -->
+    <ellipse cx="50" cy="82" rx="12" ry="3" fill="currentColor" opacity="0.1"
+    ></ellipse>
+  </svg>
+</div>
+
+<style>
+  /*  Steam wisps  */
+  .steam {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.2;
+    stroke-linecap: round;
+    opacity: 0;
+    animation: steamFloat 4s ease-in-out infinite;
+  }
+
+  .steam.s1 {
+    animation-delay: 0s;
+  }
+  .steam.s4 {
+    animation-delay: 0.7s;
+  }
+  .steam.s2 {
+    animation-delay: 1.3s;
+  }
+  .steam.s5 {
+    animation-delay: 2s;
+  }
+  .steam.s3 {
+    animation-delay: 2.6s;
+  }
+
+  @keyframes steamFloat {
+    0% {
+      opacity: 0;
+      transform: translateY(0);
+    }
+    30% {
+      opacity: 0.3;
+    }
+    70% {
+      opacity: 0.2;
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+  }
+
+  /*  Kintsugi gold shimmer  */
+  .kintsugi {
+    animation: kintsugiShimmer 6s ease-in-out infinite;
+  }
+  .kintsugi.k1 {
+    opacity: 0.7;
+    animation-delay: 0s;
+  }
+  .kintsugi.k2 {
+    opacity: 0.6;
+    animation-delay: 2s;
+  }
+  .kintsugi.k3 {
+    opacity: 0.5;
+    animation-delay: 4s;
+  }
+
+  @keyframes kintsugiShimmer {
+    0%,
+    100% {
+      filter: brightness(1);
+    }
+    50% {
+      filter: brightness(1.5) drop-shadow(0 0 2px rgba(201, 168, 76, 0.3));
+    }
+  }
+
+  /*  Bowl glow  */
+  .bowl-glow {
+    opacity: 0.04;
+    animation: bowlBreathe 6s ease-in-out infinite;
+  }
+
+  @keyframes bowlBreathe {
+    0%,
+    100% {
+      opacity: 0.04;
+    }
+    50% {
+      opacity: 0.08;
+    }
+  }
+
+  /*  Reduced motion  */
+  @media (prefers-reduced-motion: reduce) {
+    .steam {
+      animation: none;
+      opacity: 0.15;
+    }
+    .kintsugi {
+      animation: none;
+    }
+    .bowl-glow {
+      animation: none;
+      opacity: 0.06;
+    }
+  }
+</style>

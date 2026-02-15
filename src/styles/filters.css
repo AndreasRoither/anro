@@ -1,0 +1,152 @@
+/* Filter buttons and bookmark/project shape styles.
+   Shared by projects and bookmarks pages. */
+
+/*  Filter button (shared across ProjectFilter + BookmarkFilter)  */
+.anro-page .anro-filter-btn {
+  font-family: var(--anro-font);
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--anro-text);
+  background: transparent;
+  border: 1.5px solid var(--anro-bar-border);
+  padding: 0.35rem 0.85rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 150ms;
+}
+
+.anro-page .anro-filter-btn:hover {
+  border-color: var(--anro-accent);
+}
+
+.anro-page .anro-filter-btn.active {
+  border-color: var(--anro-accent);
+  background-color: var(--anro-hover-bg);
+}
+
+/*  Bookmark shapes (theme-resolved via --resolved-color)  */
+.anro-page :is(.filter-shape, .section-shape, .bookmark-tag) {
+  --resolved-color: var(--shape-color);
+}
+
+[data-theme="dark"]
+  .anro-page
+  :is(.filter-shape, .section-shape, .bookmark-tag) {
+  --resolved-color: var(--shape-color-dark);
+}
+
+/* Filter shapes (small, inside buttons) */
+.anro-page .filter-shape.shape-circle {
+  border-radius: 50%;
+  background-color: var(--resolved-color);
+}
+.anro-page .filter-shape.shape-square {
+  background-color: var(--resolved-color);
+}
+.anro-page .filter-shape.shape-triangle {
+  width: 0;
+  height: 0;
+  background: none;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-bottom: 8px solid var(--resolved-color);
+}
+.anro-page .filter-shape.shape-diamond {
+  background-color: var(--resolved-color);
+  transform: rotate(45deg);
+  width: 7px;
+  height: 7px;
+}
+
+/* Section shapes (medium, beside headings) */
+.anro-page .section-shape {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+.anro-page .section-shape.shape-circle {
+  border-radius: 50%;
+  background-color: var(--resolved-color);
+}
+.anro-page .section-shape.shape-square {
+  background-color: var(--resolved-color);
+}
+.anro-page .section-shape.shape-triangle {
+  width: 0;
+  height: 0;
+  background: none;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 14px solid var(--resolved-color);
+}
+.anro-page .section-shape.shape-diamond {
+  background-color: var(--resolved-color);
+  transform: rotate(45deg);
+  width: 11px;
+  height: 11px;
+}
+
+/* Bookmark tags (border + color + ::before shape) */
+.anro-page .bookmark-tag {
+  border: 1.5px solid var(--resolved-color);
+  color: var(--resolved-color);
+}
+
+.anro-page .bookmark-tag::before {
+  content: "";
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.anro-page .bookmark-tag.shape-circle::before {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--resolved-color);
+}
+.anro-page .bookmark-tag.shape-square::before {
+  width: 6px;
+  height: 6px;
+  background-color: var(--resolved-color);
+}
+.anro-page .bookmark-tag.shape-triangle::before {
+  width: 0;
+  height: 0;
+  border-left: 3.5px solid transparent;
+  border-right: 3.5px solid transparent;
+  border-bottom: 7px solid var(--resolved-color);
+}
+.anro-page .bookmark-tag.shape-diamond::before {
+  width: 5px;
+  height: 5px;
+  background-color: var(--resolved-color);
+  transform: rotate(45deg);
+}
+
+/*  Bookmark grid: simple border grid  */
+.anro-page .bookmark-grid {
+  border: 1px solid var(--anro-bar-border);
+}
+
+/* Mobile (1-col): horizontal dividers between items */
+.anro-page .bookmark-grid > article:not(:last-child) {
+  border-bottom: 1px solid var(--anro-bar-border);
+}
+
+/* Desktop (2-col) */
+@media (min-width: 640px) {
+  /* Vertical divider on left-column items */
+  .anro-page .bookmark-grid > article:nth-child(odd) {
+    border-right: 1px solid var(--anro-bar-border);
+  }
+
+  /* Last row: remove bottom border from penultimate item when it shares the last row */
+  .anro-page .bookmark-grid > article:nth-last-child(2):nth-child(odd) {
+    border-bottom: none;
+  }
+}

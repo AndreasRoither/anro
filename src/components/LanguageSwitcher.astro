@@ -1,0 +1,32 @@
+---
+import type { Lang } from "../i18n";
+import { defaultLang } from "../i18n";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const pathname = Astro.url.pathname;
+
+// Compute target URL: toggle between EN and DE for astro i18n
+let targetPath: string;
+if (lang === "de") {
+  // DE → switch to EN (strip /de prefix)
+  targetPath = pathname.replace(/^\/de/, "") || "/";
+} else {
+  // EN → switch to DE (add /de prefix)
+  targetPath = `/de${pathname}`;
+}
+
+const targetLang = lang === "de" ? "en" : "de";
+const label = targetLang === "de" ? "DE" : "EN";
+---
+
+<a
+  href={targetPath}
+  class="lang-switch text-[0.8rem] tracking-widest no-underline"
+  aria-label={`Switch to ${targetLang === "de" ? "Deutsch" : "English"}`}
+>
+  {label}
+</a>

@@ -1,0 +1,17 @@
+---
+import { t, getLang, type Lang } from "../i18n";
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang } = Astro.props;
+const resolvedLang = lang ?? getLang(Astro.currentLocale);
+---
+
+<a
+  href="#main"
+  class="absolute -top-full left-1/2 z-9999 -translate-x-1/2 rounded-b-lg bg-(--focus-color) px-6 py-3 font-bold text-white no-underline transition-[top] duration-150 focus:top-0"
+>
+  {t(resolvedLang, "a11y.skip")}
+</a>
