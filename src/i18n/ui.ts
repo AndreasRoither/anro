@@ -5,7 +5,7 @@ export type Lang = keyof typeof languages;
 export const ui = {
   en: {
     "a11y.skip": "Skip to main content",
-    "home.title": "Overview anro.dev",
+    "home.title": "anro.dev",
     "home.description": "Personal portfolio site of Andreas Roither. Matcha themed.",
     "nav.projects": "Projects",
     "nav.now": "Now",
@@ -26,7 +26,7 @@ export const ui = {
   },
   de: {
     "a11y.skip": "Zum Inhalt springen",
-    "home.title": "Übersicht anro.dev",
+    "home.title": "anro.dev",
     "home.description": "Persönliche Portfolio-Website von Andreas Roither. Matcha-Themed.",
     "nav.projects": "Projekte",
     "nav.now": "Jetzt",
