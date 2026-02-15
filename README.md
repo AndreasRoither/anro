@@ -1,6 +1,9 @@
 <p align="center">
+  <img src="public/og-default.jpg" alt="Tea" width="500"  />
+  <br />
   <strong>anro.dev</strong>
 </p>
+
 <p align="center">
   <a href="https://anro.dev"><img src="https://img.shields.io/badge/live-anro.dev-green" alt="Live Site" /></a>
   <a href="https://astro.build/"><img src="https://img.shields.io/badge/Astro-5-BC52EE?logo=astro&logoColor=white" alt="Astro 5" /></a>
